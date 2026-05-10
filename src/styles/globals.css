@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+/* ZAY design system — source de vérité tokens + mapping Tailwind v4 */
+@theme inline {
+  /* Brand (cahier des charges — strict) */
+  --color-brand-primary: #d4537e;
+  --color-brand-primary-light: #f4c0d1;
+  --color-brand-primary-pale: #fbeaf0;
+  --color-brand-secondary: #c4927a;
+  --color-brand-bg: #faf7f4;
+  --color-brand-bg-alt: #f0e8e0;
+  --color-brand-text: #2c1a14;
+  --color-brand-muted: #8a7068;
+  --color-brand-border: #e8ddd6;
+
+  /* Shadcn-compatible semantic aliases (dérivés du brand uniquement) */
+  --color-background: var(--color-brand-bg);
+  --color-foreground: var(--color-brand-text);
+  --color-card: #ffffff;
+  --color-card-foreground: var(--color-brand-text);
+  --color-primary: var(--color-brand-primary);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--color-brand-bg-alt);
+  --color-secondary-foreground: var(--color-brand-text);
+  --color-muted: var(--color-brand-primary-pale);
+  --color-muted-foreground: var(--color-brand-muted);
+  --color-accent: var(--color-brand-primary-light);
+  --color-accent-foreground: var(--color-brand-text);
+  --color-border: var(--color-brand-border);
+  --color-input: var(--color-brand-border);
+  --color-ring: var(--color-brand-primary-light);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
+}
+
+/* Root defaults — accessibilité & base luxe / minimaliste */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+    text-rendering: optimizeLegibility;
+    max-width: none;
+  }
+
+  body {
+    @apply min-h-dvh bg-background font-sans text-foreground;
+    max-width: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    max-width: none !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif tracking-tight text-balance;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
